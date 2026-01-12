@@ -15,4 +15,4 @@ git commit -m "$COMMIT_MSG"
 git push origin main
 
 echo "✅ Pushed: $COMMIT_MSG"
-echo "📁 Repository: https://github.com/DevOpsKiruthi/autogemrepo"
+echo "📁 Repository: https://github.com/DevOpsKiruthi/autogenrepo"
