@@ -1,0 +1,11 @@
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Environment Variables (NEVER commit credentials!)
+.env
+.env.local
+.env.*.local
+

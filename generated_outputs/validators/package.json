@@ -1,0 +1,18 @@
+{
+  "name": "inventory_function-validator",
+  "version": "1.0.0",
+  "description": "Auto-generated validator for inventory_function",
+  "main": "inventory_function_validator.js",
+  "scripts": {
+    "start": "node inventory_function_validator.js"
+  },
+  "dependencies": {
+    "@azure/identity": "^3.3.0",
+    "@azure/arm-appservice": "^13.0.0",
+    "@azure/arm-eventhub": "^5.1.0",
+    "@azure/arm-network": "^32.0.0",
+    "@azure/arm-storage": "^18.1.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  }
+}

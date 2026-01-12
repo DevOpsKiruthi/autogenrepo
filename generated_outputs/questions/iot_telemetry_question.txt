@@ -1,0 +1,24 @@
+
+IoT Telemetry Data Processing System
+
+Configure an Azure Event Hub integrated with a Virtual Network to stream and analyze 
+sensor telemetry for predictive analytics.
+
+Task Details:
+1. Create an Event Hub Namespace with Standard tier for VNet integration
+2. Create a Virtual Network with address space 10.5.0.0/16
+3. Create Event Hub with 4+ partitions and 3+ days retention
+4. Enable service endpoint for Event Hub on subnet
+
+Specifications:
+* Event Hub Namespace: <ResourceGroupName>IoTTelemetryHub
+* Namespace Tier: Standard 
+* Region: West US3
+* Event Hub Name: SensorDataStream
+* Partition Count: Minimum 4
+* Message Retention: Minimum 3 days
+* Consumer Group: analytics_processor
+* VNet Name: IoTVNet
+* VNet Address Space: 10.5.0.0/16
+* Subnet Name: IoTSubnet
+* Service Endpoint: Microsoft.EventHub

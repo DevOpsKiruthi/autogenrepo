@@ -1,0 +1,9 @@
+{
+  "project_name": "iot_telemetry",
+  "generated_at": "2026-01-12T01:33:26.881289",
+  "question_file": "generated_outputs/questions/iot_telemetry_question.txt",
+  "policy_file": "generated_outputs/policies/iot_telemetry_policy.json",
+  "validator_file": "generated_outputs/validators/iot_telemetry_validator.js",
+  "generation_method": "autonomous_ai",
+  "ai_generated": true
+}

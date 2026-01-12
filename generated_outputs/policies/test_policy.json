@@ -1,0 +1,75 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "not": {
+          "field": "type",
+          "in": [
+            "Microsoft.EventHub/namespaces",
+            "Microsoft.EventHub/namespaces/eventhubs",
+            "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+            "Microsoft.EventHub/namespaces/eventhubs/consumerGroups",
+            "Microsoft.Storage/storageAccounts",
+            "Microsoft.Storage/storageAccounts/blobServices",
+            "Microsoft.Storage/storageAccounts/fileServices",
+            "Microsoft.Storage/storageAccounts/tableServices",
+            "Microsoft.Storage/storageAccounts/queueServices",
+            "Microsoft.ApiManagement/service",
+            "Microsoft.ApiManagement/service/apis",
+            "Microsoft.ApiManagement/service/apis/revisions",
+            "Microsoft.ApiManagement/service/apis/operations",
+            "Microsoft.ContainerInstance/containerGroups"
+          ]
+        }
+      },
+      {
+        "anyOf": [
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Storage/storageAccounts"
+              },
+              {
+                "not": {
+                  "allOf": [
+                    {
+                      "field": "Microsoft.Storage/storageAccounts/sku.tier",
+                      "equals": "Standard"
+                    },
+                    {
+                      "field": "Microsoft.Storage/storageAccounts/accessTier",
+                      "equals": "Hot"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Storage/storageAccounts"
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Storage/storageAccounts/sku.name",
+                  "in": [
+                    "Standard_LRS",
+                    "Standard_GRS",
+                    "Standard_RAGRS",
+                    "Standard_ZRS"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}

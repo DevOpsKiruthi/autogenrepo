@@ -1,0 +1,52 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "not": {
+          "field": "type",
+          "in": [
+            "Microsoft.EventHub/namespaces",
+            "Microsoft.EventHub/namespaces/eventhubs",
+            "Microsoft.EventHub/namespaces/eventhubs/consumerGroups",
+            "Microsoft.Network/virtualNetworks",
+            "Microsoft.Network/virtualNetworks/subnets",
+            "Microsoft.Resources/deployments",
+            "Microsoft.Resources"
+          ]
+        }
+      },
+      {
+        "anyOf": [
+          {
+            "allOf": [
+              {"field": "type", "equals": "Microsoft.EventHub/namespaces"},
+              {"field": "sku.name", "equals": "Standard"}
+            ]
+          },
+          {
+            "allOf": [
+              {"field": "type", "equals": "Microsoft.EventHub/namespaces/eventhubs"},
+              {"field": "Microsoft.EventHub/namespaces/eventhubs/partitionCount", "greaterThanOrEquals": 4},
+              {"field": "Microsoft.EventHub/namespaces/eventhubs/messageRetentionInDays", "greaterThanOrEquals": 3}
+            ]
+          },
+          {
+            "allOf": [
+              {"field": "type", "equals": "Microsoft.Network/virtualNetworks"},
+              {"field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes", "in": ["10.5.0.0/16"]}
+            ]
+          },
+          {
+            "allOf": [
+              {"field": "type", "equals": "Microsoft.Network/virtualNetworks/subnets"},
+              {"field": "Microsoft.Network/virtualNetworks/subnets/serviceEndpoints", "contains": "Microsoft.EventHub"}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}

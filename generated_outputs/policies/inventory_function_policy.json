@@ -1,0 +1,45 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "not": {
+          "field": "type",
+          "in": [
+            "Microsoft.Resources/resourceGroups",
+            "Microsoft.Web/sites",
+            "Microsoft.Web/serverfarms",
+            "Microsoft.Web/sites/functions",
+            "Microsoft.Storage/storageAccounts",
+            "Microsoft.EventHub/namespaces",
+            "Microsoft.EventHub/eventhubs",
+            "Microsoft.EventHub/namespaces/eventhubs",
+            "Microsoft.EventHub/namespaces/authorizationRules",
+            "Microsoft.Resources/deployments"
+          ]
+        }
+      },
+      {
+        "anyOf": [
+          {
+            "allOf": [
+              {"field": "type", "equals": "Microsoft.Storage/storageAccounts"},
+              {"not": {"allOf": [
+                {"field": "Microsoft.Storage/storageAccounts/sku.tier", "equals": "Standard"},
+                {"field": "Microsoft.Storage/storageAccounts/accessTier", "equals": "Hot"}
+              ]}}
+            ]
+          },
+          {
+            "allOf": [
+              {"field": "type", "equals": "Microsoft.Storage/storageAccounts"},
+              {"not": {"field": "Microsoft.Storage/storageAccounts/sku.name", "in": [
+                "Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS"
+              ]}}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "then": {"effect": "deny"}
+}

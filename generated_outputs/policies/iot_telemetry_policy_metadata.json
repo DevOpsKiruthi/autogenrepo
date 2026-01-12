@@ -1,0 +1,6 @@
+{
+  "created_at": "2026-01-11T15:21:35.019005",
+  "requirements": "Allow: Event Hub, Storage, API Management, Container Instances",
+  "resource_types_count": 31,
+  "output_file": "iot_telemetry_policy.json"
+}

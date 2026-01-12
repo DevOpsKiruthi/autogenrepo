@@ -1,0 +1,27 @@
+
+Product Inventory Checker for Warehouse Management
+
+You're an Azure developer in an e-commerce company and have been tasked with creating 
+an Azure Function App that provides real-time inventory status for warehouse products. 
+The Function App should be triggered via HTTP requests and respond with stock availability 
+information based on the product SKU provided in the request.
+
+Task Details:
+* Create an Azure Function App in the existing resource group with the required details
+* Create a new function with an HTTP Trigger with the default Storage Account
+* Choose the Authorization level as "Function"
+* Implement the logic in .NET 8 in-process Model to check and return inventory status
+* If a valid SKU is provided, respond with "Product {sku} is in stock. Available quantity: {quantity} units."
+* If no SKU is provided, return error: "Please provide a product SKU in the query string."
+* If SKU doesn't exist, return: "Product {sku} not found in inventory."
+
+Specifications:
+* Resource Group: Existing resource group
+* Function App Name: <Resource Group Name>-inventory
+* Location: East US 
+* Runtime Stack: .NET 8 in-process Model
+* Hosting Plan: Consumption Plan
+* Function Name: CheckStock
+* Query Parameter Name: sku
+* Sample Test Value: LAPTOP2024
+* Expected Response: "Product LAPTOP2024 is in stock. Available quantity: 150 units."
